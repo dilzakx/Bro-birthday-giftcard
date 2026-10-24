@@ -1,0 +1,920 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>BREAKING: the daily menace 🗞️ 24 Oct 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=UnifrakturMaguntia&family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&family=Courier+Prime:wght@400;700&family=Permanent+Marker&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #f2ead9;
+    --paper-2: #e6dcc6;
+    --ink: #15120f;
+    --ink-2: #3a342c;
+    --red: #e3241c;
+    --red-d: #b8160f;
+    --hi: #ffe14a;
+    --grey: #b9ae98;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+  html, body { height: 100%; overflow: hidden; }
+  body {
+    background: var(--red);
+    font-family: 'Libre Caslon Text', serif; color: var(--ink);
+    -webkit-font-smoothing: antialiased; user-select: none;
+  }
+  button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; }
+  .hidden { display: none !important; }
+
+  /* halftone red world behind everything */
+  #world {
+    position: fixed; inset: 0; z-index: 0;
+    background:
+      radial-gradient(circle at 50% 50%, rgba(120,6,2,.38) 0 1.6px, transparent 2.2px) 0 0 / 9px 9px,
+      radial-gradient(120% 80% at 50% 30%, #f0342b 0%, var(--red) 50%, #a9130d 100%);
+  }
+  .ticker {
+    position: fixed; left: 0; right: 0; top: 0; height: 34px; z-index: 30;
+    background: var(--ink); color: var(--hi); overflow: hidden;
+    border-bottom: 3px solid var(--hi);
+    font-family: 'Anton', sans-serif; font-size: 17px; letter-spacing: .08em; line-height: 34px;
+    white-space: nowrap; pointer-events: none;
+  }
+  .ticker::before {
+    content: 'BREAKING ✶ LOCAL MENACE TURNS 20 ✶ SOURCES CONFIRM CAKE ✶ BROTHER "NOT SURPRISED" ✶ BREAKING ✶ LOCAL MENACE TURNS 20 ✶ SOURCES CONFIRM CAKE ✶ BROTHER "NOT SURPRISED" ✶ ';
+    display: inline-block; padding-left: 100%;
+    animation: tick 16s linear infinite;
+  }
+  @keyframes tick { to { transform: translateX(-100%); } }
+
+  .music {
+    position: fixed; top: 3px; right: 6px; z-index: 31; height: 28px; padding: 0 12px;
+    background: var(--hi); color: var(--ink); border: 2px solid var(--ink);
+    font-family: 'Anton', sans-serif; font-size: 14px; letter-spacing: .08em; line-height: 24px; text-transform: uppercase;
+  }
+  .music.off { background: var(--paper-2); color: var(--ink-2); }
+  .music:focus-visible { outline: 3px solid #fff; outline-offset: 2px; }
+  @media (min-width: 900px) { .music { top: 5px; height: 30px; line-height: 26px; } }
+
+  .wm { position: fixed; left: 0; right: 0; bottom: calc(env(safe-area-inset-bottom, 0px) + 2px); z-index: 1; text-align: center; pointer-events: none;
+    font-family: 'Courier Prime', monospace; font-weight: 700; font-size: 11px; letter-spacing: .18em; color: rgba(255,255,255,.8); }
+  .scene { position: fixed; inset: 0; display: none; z-index: 2; }
+  .scene.show { display: block; }
+
+  /* ───────── 1 · the press ───────── */
+  #press { display: none; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 60px 8% 40px; color: #fff; }
+  #press.show { display: flex; }
+  .kicker { font-family: 'Courier Prime', monospace; font-weight: 700; font-size: 13px; letter-spacing: .32em; text-transform: uppercase; }
+  #press .kicker { color: var(--hi); }
+  .shout {
+    font-family: 'Anton', sans-serif; text-transform: uppercase; line-height: .86;
+    font-size: clamp(84px, 27vw, 190px); letter-spacing: -.01em; margin: 14px 0 18px;
+    color: #fff; text-shadow: 6px 6px 0 var(--ink);
+  }
+  #press .whisper { font-family: 'Libre Caslon Text', serif; font-style: italic; font-size: 20px; color: #ffe9e4; max-width: 300px; }
+  .rollers { position: relative; width: 230px; height: 70px; margin: 34px auto 30px; }
+  .rollers i {
+    position: absolute; left: 0; right: 0; height: 26px; border-radius: 13px;
+    background: repeating-linear-gradient(90deg, #222 0 10px, #3a3a3a 10px 20px);
+    box-shadow: inset 0 -6px 0 rgba(0,0,0,.4), 0 6px 0 rgba(0,0,0,.25);
+    animation: roll .5s linear infinite;
+  }
+  .rollers i:nth-child(1) { top: 0; }
+  .rollers i:nth-child(2) { top: 36px; animation-direction: reverse; }
+  .rollers b {
+    position: absolute; left: 22px; right: 22px; top: 22px; height: 20px; background: var(--paper);
+    box-shadow: 0 0 0 2px rgba(0,0,0,.15);
+    background-image: repeating-linear-gradient(0deg, transparent 0 3px, var(--grey) 3px 4px);
+  }
+  @keyframes roll { to { background-position: 20px 0; } }
+  .btn {
+    font-family: 'Anton', sans-serif; text-transform: uppercase; letter-spacing: .06em;
+    font-size: 22px; padding: 16px 30px 14px; background: var(--hi); color: var(--ink);
+    box-shadow: 0 0 0 3px var(--ink), 7px 7px 0 3px var(--ink);
+    transition: transform .1s, box-shadow .1s;
+  }
+  .btn:active { transform: translate(4px, 4px); box-shadow: 0 0 0 3px var(--ink), 3px 3px 0 3px var(--ink); }
+  .btn.dark { background: var(--ink); color: var(--paper); box-shadow: 0 0 0 3px var(--ink), 6px 6px 0 3px var(--red); }
+  .btn.dark:active { box-shadow: 0 0 0 3px var(--ink), 2px 2px 0 3px var(--red); }
+  .btn.small { font-size: 17px; padding: 12px 20px 10px; }
+
+  /* the sheet: one sheet of newsprint shared by inner scenes */
+  .sheet {
+    position: absolute; left: 50%; top: 50px; bottom: 16px; width: min(94vw, 500px);
+    transform: translateX(-50%);
+    background:
+      radial-gradient(130% 90% at 30% 10%, rgba(255,255,255,.35), transparent 60%),
+      repeating-linear-gradient(0deg, rgba(0,0,0,.018) 0 1px, transparent 1px 3px),
+      var(--paper);
+    box-shadow: 0 30px 60px -20px rgba(60,0,0,.65), 0 0 0 1px rgba(0,0,0,.08);
+    padding: 14px 16px 16px; overflow: hidden;
+    display: flex; flex-direction: column;
+  }
+  .sheet::after { /* fold line */
+    content: ''; position: absolute; left: 0; right: 0; top: 50%; height: 2px; pointer-events: none;
+    background: linear-gradient(90deg, transparent, rgba(0,0,0,.07) 20%, rgba(0,0,0,.07) 80%, transparent);
+  }
+  .spin-in { animation: spinIn 1.3s cubic-bezier(.2,.75,.25,1) both; }
+  @keyframes spinIn {
+    0% { transform: translateX(-50%) rotate(-1080deg) scale(.04); }
+    80% { transform: translateX(-50%) rotate(4deg) scale(1.04); }
+    100% { transform: translateX(-50%) rotate(0) scale(1); }
+  }
+  .slide-in { animation: slideIn .7s cubic-bezier(.2,.9,.3,1) both; }
+  @keyframes slideIn { from { transform: translateX(-50%) translateY(110%) rotate(6deg); } to { transform: translateX(-50%); } }
+
+  .dateline {
+    display: flex; justify-content: space-between; gap: 8px;
+    font-family: 'Courier Prime', monospace; font-size: 10.5px; letter-spacing: .06em; text-transform: uppercase; color: var(--ink-2);
+    border-bottom: 1px solid var(--ink); padding-bottom: 5px;
+  }
+  .mast {
+    font-family: 'UnifrakturMaguntia', serif; text-align: center; line-height: 1;
+    font-size: clamp(40px, 12.4vw, 62px); padding: 6px 0 4px;
+    border-bottom: 4px double var(--ink);
+  }
+  .headline {
+    font-family: 'Anton', sans-serif; text-transform: uppercase; line-height: .9;
+    font-size: clamp(50px, 15.4vw, 80px); margin: 10px 0 4px; letter-spacing: -.005em;
+  }
+  .headline.hl { color: var(--red); }
+  .deck { font-style: italic; font-size: 16.5px; line-height: 1.25; color: var(--ink-2); }
+
+  .front-body { display: flex; gap: 12px; margin-top: 10px; flex: 1; min-height: 0; }
+  .lead-photo { flex: 1.35; display: flex; flex-direction: column; min-height: 0; }
+  .halftone {
+    position: relative; flex: 1; min-height: 120px; overflow: hidden;
+    background:
+      radial-gradient(circle, rgba(0,0,0,.14) 0 1px, transparent 1.4px) 0 0 / 5px 5px,
+      var(--hi);
+    border: 2px solid var(--ink);
+  }
+  .halftone img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; mix-blend-mode: multiply; filter: grayscale(.15) contrast(1.1); }
+  .caption { font-family: 'Courier Prime', monospace; font-size: 11px; line-height: 1.3; margin-top: 5px; color: var(--ink-2); }
+  .col { flex: 1; display: flex; flex-direction: column; gap: 8px; min-width: 0; }
+  .col h3 { font-family: 'Libre Caslon Text', serif; font-weight: 700; font-size: 15px; line-height: 1.15; }
+  .lines { display: flex; flex-direction: column; gap: 5px; }
+  .lines i { display: block; height: 4px; background: var(--grey); border-radius: 1px; opacity: .8; }
+  .lines i:nth-child(3n) { width: 78%; } .lines i:nth-child(5n) { width: 60%; }
+  .inside { border: 2px solid var(--ink); padding: 7px 8px; background: var(--paper-2); }
+  .inside p { font-family: 'Anton', sans-serif; text-transform: uppercase; font-size: 15px; line-height: 1.05; }
+  .inside small { display: block; font-family: 'Courier Prime', monospace; font-size: 10px; margin-top: 3px; letter-spacing: .1em; }
+  .foot { display: flex; justify-content: center; padding-top: 14px; }
+
+  /* ───────── 2 · the exposé ───────── */
+  .tag {
+    align-self: flex-start; background: var(--red); color: #fff;
+    font-family: 'Anton', sans-serif; letter-spacing: .12em; font-size: 14px; padding: 4px 10px 3px; text-transform: uppercase;
+  }
+  #expose .headline { font-size: clamp(44px, 13vw, 70px); }
+  .crimes { list-style: none; counter-reset: c; margin-top: 12px; display: flex; flex-direction: column; gap: 11px; flex: 1; min-height: 0; overflow-y: auto; overflow-x: hidden; -webkit-overflow-scrolling: touch; padding-bottom: 6px; }
+  .crime { flex: none; position: relative; display: flex; gap: 10px; align-items: flex-start; counter-increment: c; cursor: pointer; border-top: 1px solid rgba(0,0,0,.25); padding-top: 9px; }
+  .crime::before {
+    content: counter(c, decimal-leading-zero); font-family: 'Anton', sans-serif; font-size: 26px; line-height: .9; color: var(--red); min-width: 34px;
+  }
+  .crime p { font-family: 'Libre Caslon Text', serif; font-size: clamp(14px, 4.2vw, 17px); line-height: 1.4; flex: 1; min-width: 0; padding-right: 4px; overflow-wrap: anywhere; }
+  .crime p span { -webkit-box-decoration-break: clone; box-decoration-break: clone; background: linear-gradient(transparent 52%, rgba(255,225,74,.9) 52%) no-repeat 0 0 / 0% 100%; }
+  .crime .bar {
+    position: absolute; left: 44px; right: 0; top: 7px; bottom: -3px; background: var(--ink);
+    transform-origin: right center; transition: transform .45s cubic-bezier(.7,0,.3,1);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .crime .bar::after {
+    content: 'CLASSIFIED · TAP'; font-family: 'Courier Prime', monospace; font-weight: 700; font-size: 11px; letter-spacing: .22em; white-space: nowrap; color: #6b6458;
+  }
+  .crime.open .bar { transform: scaleX(0); }
+  .crime.open p span { animation: hiPen .6s .25s both; }
+  @keyframes hiPen { to { background-size: 100% 100%; } }
+  .verdict {
+    position: absolute; right: 22px; bottom: 120px; z-index: 4;
+    font-family: 'Anton', sans-serif; text-transform: uppercase; font-size: 30px; line-height: 1; text-align: center;
+    color: var(--red); border: 5px solid var(--red); padding: 8px 12px 6px; border-radius: 6px;
+    transform: rotate(-12deg) scale(3); opacity: 0; pointer-events: none;
+    mix-blend-mode: multiply; filter: url(#grunge);
+  }
+  .verdict.slam { animation: slam .45s cubic-bezier(.5,0,.6,1.4) forwards; }
+  @keyframes slam { 0% { opacity: 0; transform: rotate(-12deg) scale(3); } 70% { opacity: .95; transform: rotate(-12deg) scale(.94); } 100% { opacity: .92; transform: rotate(-12deg) scale(1); } }
+  .count { font-family: 'Courier Prime', monospace; font-size: 12px; letter-spacing: .2em; color: var(--ink-2); text-align: center; min-height: 14px; margin-top: 8px; }
+
+  /* ───────── 3 · evidence ───────── */
+  #evidence .sheet { background: var(--paper-2); }
+  .board { position: relative; flex: 1; min-height: 0; margin-top: 8px; }
+  .cut {
+    position: absolute; width: min(58%, 29vh); aspect-ratio: 4 / 4.4; cursor: pointer;
+    filter: drop-shadow(3px 5px 0 rgba(0,0,0,.25));
+    transition: transform .3s;
+  }
+  .cut:active { transform: rotate(var(--r)) scale(.97) !important; }
+  .cut .torn {
+    position: absolute; inset: 0; background: var(--c, #fff);
+    clip-path: polygon(0 3%, 9% 0, 22% 2%, 35% 0, 51% 3%, 66% 0, 80% 2%, 100% 0, 98% 18%, 100% 34%, 97% 52%, 100% 70%, 98% 86%, 100% 100%, 84% 97%, 68% 100%, 50% 97%, 33% 100%, 17% 97%, 0 100%, 2% 82%, 0 64%, 3% 46%, 0 28%);
+  }
+  .cut .torn img { width: 100%; height: 100%; object-fit: cover; display: block; mix-blend-mode: multiply; }
+  .cut .tape { position: absolute; top: -10px; left: 50%; width: 70px; height: 22px; margin-left: -35px; background: rgba(255,240,180,.75); transform: rotate(-6deg); box-shadow: 0 1px 2px rgba(0,0,0,.15); z-index: 2; }
+  .cut svg.ring { position: absolute; inset: -12%; width: 124%; height: 124%; overflow: visible; pointer-events: none; z-index: 3; }
+  .cut svg.ring path { fill: none; stroke: var(--red); stroke-width: 4; stroke-linecap: round; stroke-dasharray: 600; stroke-dashoffset: 600; transition: stroke-dashoffset .8s ease-out; }
+  .cut.marked svg.ring path { stroke-dashoffset: 0; }
+  .cut .note {
+    position: absolute; z-index: 4; font-family: 'Permanent Marker', cursive; color: var(--red); font-size: 20px; line-height: 1.05;
+    width: 140px; text-shadow: 0 0 6px var(--paper-2), 0 0 2px var(--paper-2); opacity: 0; transform: scale(.6) rotate(var(--nr, -6deg)); transition: opacity .3s .5s, transform .4s .5s cubic-bezier(.3,1.6,.5,1);
+  }
+  .cut.marked .note { opacity: 1; transform: scale(1) rotate(var(--nr, -6deg)); }
+  .cut.c1 { --r: -5deg; left: 2%; top: 2%; transform: rotate(-5deg); --c: #ffd2c4; }
+  .cut.c2 { --r: 6deg; right: 0; top: 30%; transform: rotate(6deg); --c: #cfe6ff; }
+  .cut.c3 { --r: -3deg; left: 8%; top: 57%; width: min(50%, 25vh); transform: rotate(-3deg); --c: #fff0a8; }
+  .c1 .note { left: 104%; top: 4%; --nr: 6deg; }
+  .c2 .note { right: 4%; top: 103%; text-align: right; --nr: -5deg; }
+  .c3 .note { left: 100%; bottom: 0; --nr: -4deg; width: 120px; }
+  .cut.marked { z-index: 5; }
+  .hint { font-family: 'Courier Prime', monospace; font-size: 12px; letter-spacing: .2em; text-transform: uppercase; color: var(--ink-2); text-align: center; }
+
+  /* ───────── 4 · reader poll ───────── */
+  #poll .headline { font-size: clamp(40px, 12vw, 64px); }
+  .opts { display: flex; flex-direction: column; gap: 14px; margin-top: 22px; position: relative; flex: 1; }
+  .opt {
+    position: relative; display: flex; align-items: center; justify-content: space-between; gap: 10px;
+    border: 3px solid var(--ink); padding: 14px 16px 12px; background: var(--paper);
+    font-family: 'Anton', sans-serif; text-transform: uppercase; font-size: 24px; letter-spacing: .03em; text-align: left;
+    box-shadow: 5px 5px 0 var(--ink); transition: transform .1s, box-shadow .1s, left .25s, top .25s;
+    overflow: hidden;
+  }
+  .opt:active { transform: translate(3px,3px); box-shadow: 2px 2px 0 var(--ink); }
+  .opt::after { content: '○'; font-family: 'Courier Prime', monospace; font-size: 22px; }
+  .opt .fillbar { position: absolute; left: 0; top: 0; bottom: 0; width: 0; background: var(--hi); z-index: -1; transition: width 1.2s cubic-bezier(.2,.8,.2,1); }
+  .opt span { position: relative; z-index: 1; }
+  #poll.voted .opt { pointer-events: none; }
+  #poll.voted .opt::after { content: ''; }
+  #poll.voted .opt.win .fillbar { width: 100%; }
+  .opt.no { align-self: flex-start; font-size: 17px; padding: 9px 14px 7px; box-shadow: 3px 3px 0 var(--ink); }
+  .opt.no.run { position: absolute; }
+  .results { margin-top: 6px; display: flex; flex-direction: column; gap: 4px; opacity: 0; transition: opacity .5s 1s; }
+  #poll.voted .results { opacity: 1; }
+  .results p { font-family: 'Courier Prime', monospace; font-size: 13px; letter-spacing: .04em; }
+  .results p.big { font-family: 'Permanent Marker', cursive; color: var(--red); font-size: 22px; transform: rotate(-3deg); margin-top: 4px; letter-spacing: 0; }
+
+  /* ───────── letter from the editor ───────── */
+  #letter .sheet { background: var(--paper-2); }
+  #letter .headline { font-family: 'UnifrakturMaguntia', serif; text-transform: none; font-size: clamp(44px, 13vw, 66px); line-height: 1; margin: 8px 0 2px; }
+  .letter-body { flex: 1; min-height: 0; overflow-y: auto; margin-top: 8px; padding-right: 4px; -webkit-overflow-scrolling: touch; }
+  .letter-body p { font-size: clamp(15px, 4.2vw, 17.5px); line-height: 1.42; margin-bottom: 11px; opacity: 0; transform: translateY(10px); }
+  #letter.show .letter-body p { animation: lineIn .8s ease-out forwards; }
+  #letter.show .letter-body p:nth-child(1) { animation-delay: .3s; }
+  #letter.show .letter-body p:nth-child(2) { animation-delay: 1.4s; }
+  #letter.show .letter-body p:nth-child(3) { animation-delay: 2.6s; }
+  #letter.show .letter-body p:nth-child(4) { animation-delay: 3.8s; }
+  #letter.show .letter-body p.lsign { animation-delay: 4.8s; }
+  @keyframes lineIn { to { opacity: 1; transform: none; } }
+  .letter-body p.lsign { font-family: 'Permanent Marker', cursive; color: var(--red); font-size: 21px; line-height: 1.15; transform: rotate(-2deg) translateY(10px); margin-top: 6px; }
+  #letter.show .letter-body p.lsign { animation-name: signIn; }
+  @keyframes signIn { to { opacity: 1; transform: rotate(-2deg); } }
+
+  #official .sheet { align-items: center; text-align: center; }
+  #official .sheet { align-items: center; text-align: center; }
+  .stamp-zone { position: relative; width: 100%; flex: 1; min-height: 0; }
+  .stamp-tool {
+    position: absolute; left: 50%; top: 0; width: 150px; margin-left: -75px; z-index: 5;
+    transform: translateY(calc(var(--p, 0) * 150px)) rotate(calc(-8deg + var(--p, 0) * 8deg));
+    transition: transform .06s linear;
+  }
+  .stamp-tool svg { width: 100%; display: block; filter: drop-shadow(0 10px 8px rgba(0,0,0,.3)); }
+  .stamp-tool.hit { animation: thunk .5s ease-out forwards; }
+  @keyframes thunk { 0% { transform: translateY(170px); } 30% { transform: translateY(170px) scale(1.04, .95); } 100% { transform: translateY(-90px) rotate(10deg); opacity: 0; } }
+  .ink {
+    position: absolute; left: 50%; top: 168px; width: 272px; margin-left: -136px; z-index: 2;
+    border: 6px solid var(--red); border-radius: 16px; padding: 10px 10px 8px; color: var(--red);
+    box-shadow: inset 0 0 0 3px var(--paper), inset 0 0 0 6px var(--red);
+    transform: rotate(-7deg); opacity: 0; mix-blend-mode: multiply; filter: url(#grunge);
+  }
+  #official.done .ink { opacity: .94; animation: inkIn .25s ease-out; }
+  @keyframes inkIn { from { opacity: 0; transform: rotate(-7deg) scale(1.15); } }
+  .ink p { font-family: 'Anton', sans-serif; text-transform: uppercase; font-size: 50px; line-height: .95; }
+  .ink small { display: block; font-family: 'Courier Prime', monospace; font-weight: 700; font-size: 11px; letter-spacing: .3em; text-transform: uppercase; margin-top: 4px; }
+  .reveal { position: absolute; left: 0; right: 0; top: 362px; display: flex; flex-direction: column; align-items: center; }
+  .reveal > * { opacity: 0; transform: translateY(14px); transition: opacity .7s, transform .7s; }
+  #official.done .reveal > * { opacity: 1; transform: none; }
+  #official.done .reveal > *:nth-child(2) { transition-delay: .3s; }
+  #official.done .reveal > *:nth-child(3) { transition-delay: .7s; }
+  #official.done .reveal > *:nth-child(4) { transition-delay: 1.2s; }
+  .name { font-family: 'UnifrakturMaguntia', serif; font-size: clamp(66px, 20vw, 110px); line-height: 1; }
+  .reveal .line { font-style: italic; font-size: 19px; line-height: 1.25; max-width: 300px; margin-top: 6px; }
+  .reveal .sign { font-family: 'Permanent Marker', cursive; color: var(--red); font-size: 20px; margin-top: 12px; transform: rotate(-2deg); }
+  .reveal .again { font-family: 'Courier Prime', monospace; font-size: 12px; letter-spacing: .25em; text-transform: uppercase; margin-top: 18px; padding: 8px; color: var(--ink-2); }
+  .holdbtn { position: relative; overflow: hidden; touch-action: none; }
+  .holdbtn .fill { position: absolute; left: 0; top: 0; bottom: 0; width: 0; background: rgba(227,36,28,.35); pointer-events: none; }
+  .holdbtn span { position: relative; }
+  #official.done .holdbtn { opacity: 0; pointer-events: none; transition: opacity .3s; }
+  #official.done .foot { display: none; }
+  #official .reveal { z-index: 6; }
+  #official .reveal .again { cursor: pointer; }
+  #official .foot { position: absolute; left: 0; right: 0; bottom: 22px; }
+  .scrap {
+    position: fixed; z-index: 40; pointer-events: none; width: 26px; height: 18px;
+    background: var(--paper); box-shadow: 0 1px 2px rgba(0,0,0,.3);
+    background-image: repeating-linear-gradient(0deg, transparent 0 3px, var(--grey) 3px 4px);
+    animation: fall var(--t, 2.4s) cubic-bezier(.3,.4,.6,1) forwards;
+  }
+  .scrap.r { background: var(--red); background-image: none; }
+  .scrap.y { background: var(--hi); background-image: none; }
+  @keyframes fall { to { transform: translate(var(--x), 110vh) rotate(var(--rot)); } }
+  .shake { animation: shake .35s; }
+  @keyframes shake { 20% { transform: translateX(-50%) translate(-4px, 3px); } 40% { transform: translateX(-50%) translate(4px, -2px); } 60% { transform: translateX(-50%) translate(-3px, 1px); } 80% { transform: translateX(-50%) translate(2px, 0); } }
+
+  /* ───────── game · tic-tac-toe ───────── */
+  #game .headline { font-size: clamp(40px, 12vw, 62px); }
+  .scoreboard { flex: none; display: flex; gap: 8px; margin-top: 10px; }
+  .chip { flex: 1; display: flex; align-items: center; justify-content: center; gap: 7px; padding: 6px 6px 4px; border: 2px solid var(--ink); background: var(--paper-2); font-family: 'Anton', sans-serif; text-transform: uppercase; font-size: 15px; letter-spacing: .04em; transition: background .2s, box-shadow .2s; }
+  .chip b { font-size: 22px; line-height: 1; color: var(--red); font-weight: 400; }
+  .chip.o b { color: var(--ink); }
+  .chip em { min-width: 24px; text-align: center; font-style: normal; background: var(--ink); color: var(--paper); padding: 1px 7px; }
+  .chip.on { background: var(--hi); box-shadow: 3px 3px 0 var(--ink); }
+  .chip.d { flex: .8; }
+  .statusrow { height: 30px; flex: none; display: flex; justify-content: space-between; align-items: center; margin-top: 8px; min-height: 26px; }
+  .status { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; min-width: 0; font-family: 'Courier Prime', monospace; font-weight: 700; font-size: 13px; letter-spacing: .08em; text-transform: uppercase; }
+  .redo { font-family: 'Courier Prime', monospace; font-size: 12px; letter-spacing: .2em; text-transform: uppercase; padding: 6px 4px; color: var(--ink-2); }
+  .boardwrap { flex: 1; min-height: 0; display: flex; align-items: center; justify-content: center; container-type: size; margin-top: 4px; }
+  .ttt { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); grid-template-rows: repeat(3, minmax(0, 1fr)); gap: 5px; padding: 5px; background: var(--ink); width: min(100%, 300px); aspect-ratio: 1; width: min(100cqw, 100cqh); box-shadow: 6px 6px 0 var(--red); }
+  .cell { min-width: 0; min-height: 0; overflow: hidden; padding: 0; background: var(--paper); font-family: 'Anton', sans-serif; font-size: 64px; font-size: calc(min(100cqw, 100cqh) / 3 * .74); line-height: 1; color: var(--red); display: flex; align-items: center; justify-content: center; touch-action: manipulation; }
+  .cell.o { color: var(--ink); }
+  .cell:not(.x):not(.o):active { background: var(--hi); }
+  .cell i { display: block; font-style: normal; line-height: .9; margin-top: .04em; animation: pop .3s cubic-bezier(.3,1.7,.5,1); }
+  @keyframes pop { from { transform: scale(.2) rotate(-25deg); opacity: 0; } }
+  .cell.win { background: var(--hi) radial-gradient(circle, rgba(0,0,0,.14) 0 1px, transparent 1.4px) 0 0 / 5px 5px; }
+  .ttt.locked .cell { pointer-events: none; }
+  .dlg { position: fixed; inset: 0; z-index: 60; display: none; align-items: center; justify-content: center; background: rgba(21,18,15,.55); padding: 20px; }
+  .dlg.show { display: flex; animation: fadeD .25s both; }
+  @keyframes fadeD { from { opacity: 0; } }
+  .dlg .card { width: min(88vw, 340px); text-align: center; background: var(--paper); border: 4px solid var(--ink); box-shadow: 8px 8px 0 var(--red); padding: 22px 18px 20px; animation: popD .4s cubic-bezier(.3,1.5,.5,1) both; }
+  @keyframes popD { from { transform: scale(.5) rotate(-6deg); opacity: 0; } }
+  .dlg .tag { display: inline-block; }
+  .dlg h3 { font-family: 'Anton', sans-serif; text-transform: uppercase; font-size: 64px; line-height: .95; margin: 10px 0 4px; color: var(--red); }
+  .dlg p { font-style: italic; font-size: 16px; color: var(--ink-2); }
+  .dlg .btn { margin-top: 18px; opacity: 0; pointer-events: none; transform: translateY(10px); transition: opacity .4s, transform .4s; }
+  .dlg.ready .btn { opacity: 1; pointer-events: auto; transform: none; }
+  img.emo { height: 1.12em; width: 1.12em; vertical-align: -.2em; display: inline-block; margin: 0 .05em; pointer-events: none; }
+
+  /* rising messages */
+  .toast { position: fixed; bottom: 9vh; z-index: 45; width: min(46vw, 230px); pointer-events: none;
+    background: var(--paper); border: 3px solid var(--ink); box-shadow: 5px 5px 0 var(--ink); padding: 9px 12px 8px;
+    --dx: 0px; --rot: -2deg; animation: rise 8s linear forwards; }
+  .toast .tt { display: inline-block; background: var(--red); color: #fff; font-family: 'Anton', sans-serif; text-transform: uppercase; letter-spacing: .1em; font-size: 12px; padding: 2px 8px 1px; }
+  .toast p { font-family: 'Libre Caslon Text', serif; font-size: 14.5px; line-height: 1.3; margin-top: 6px; }
+  .toast small { display: block; font-family: 'Courier Prime', monospace; font-size: 10px; letter-spacing: .15em; text-transform: uppercase; color: var(--ink-2); margin-top: 5px; }
+  .toast.L { left: 8px; --rot: -3deg; } .toast.R { right: 8px; --rot: 3deg; }
+  .toast.big { background: var(--hi); }
+  .toast.held { box-shadow: 0 0 0 3px var(--red), 5px 5px 0 3px var(--ink); }
+  @keyframes rise {
+    0% { transform: translateY(30px) rotate(var(--rot)); opacity: 0; }
+    6% { transform: translateY(0) rotate(var(--rot)); opacity: 1; }
+    88% { opacity: 1; }
+    100% { transform: translateY(-74vh) rotate(var(--rot)); opacity: 0; }
+  }
+
+  @media (min-width: 900px) {
+    .cut { width: 205px !important; }
+    .cut.c2 { top: 24%; right: 6%; }
+    .cut.c3 { width: 180px !important; top: 52%; left: 14%; }
+    .sheet { top: 60px; bottom: 26px; width: 520px; padding: 18px 22px 20px; }
+    .ticker { height: 40px; line-height: 40px; font-size: 20px; }
+  }
+  @media (max-height: 780px) {
+    .ink { top: 150px; }
+    .reveal { top: 296px; }
+    .name { font-size: clamp(54px, 16vw, 84px); }
+    .reveal .line { font-size: 17px; }
+    .reveal .sign { margin-top: 8px; font-size: 18px; }
+    .reveal .again { margin-top: 8px; }
+  }
+  @media (max-height: 700px) {
+    .headline { font-size: 46px; }
+    .crime p { font-size: 14.5px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .15s !important; }
+  }
+</style>
+
+<meta name="description" content="a tabloid birthday roast for my brother turning 20 — a front page, his crimes behind black bars, photo evidence, a rigged poll, and a stamp to make his birthday official.">
+<meta property="og:title" content="Happy 20th Birthday, Bhai">
+<meta property="og:description" content="a tabloid birthday roast for my brother turning 20 — a front page, his crimes behind black bars, photo evidence, a rigged poll, and a stamp to make his birthday official.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="The Daily Menace">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Happy 20th Birthday, Bhai">
+<meta name="twitter:description" content="a tabloid birthday roast for my brother turning 20 — a front page, his crimes behind black bars, photo evidence, a rigged poll, and a stamp to make his birthday official.">
+<meta name="theme-color" content="#FFFBF3">
+</head>
+<body>
+
+<div id="world"></div>
+<div class="ticker" aria-hidden="true"></div>
+<!-- watermark: change the text below to your handle / link if you want -->
+<div class="wm">@codexdilzak</div>
+
+<!-- 🎵 SONG: put your mp3 in the same folder as this file and name it song.mp3 (or change the name below) -->
+<audio id="bgm" src="song.mp3" loop preload="auto"></audio>
+<button class="music hidden" id="btnMusic" type="button" aria-label="Toggle music">♪ music on</button>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <filter id="grunge"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" seed="4"></feTurbulence><feColorMatrix values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -2.2 1.6"></feColorMatrix><feComposite in="SourceGraphic" operator="in"></feComposite></filter>
+</svg>
+
+<!-- ═════════ 1 · stop the press ═════════ -->
+<section class="scene show" id="press" data-lovely-page="stop the press">
+  <p class="kicker" data-lovely-id="t1">urgent · do not ignore</p>
+  <h1 class="shout" data-lovely-id="t2">stop the press.</h1>
+  <p class="whisper" data-lovely-id="t3">a birthday has been reported. (distance: irrelevant.)</p>
+  <div class="rollers" aria-hidden="true"><i></i><b></b><i></i></div>
+  <button class="btn" id="btnPrint" data-lovely-id="t4">print the paper</button>
+</section>
+
+<!-- ═════════ 2 · front page ═════════ -->
+<section class="scene" id="front" data-lovely-page="front page">
+  <div class="sheet" id="frontSheet">
+    <div class="dateline"><span data-lovely-id="t5">vol. 20</span><span data-lovely-id="t6">24 oct 2026</span><span data-lovely-id="t7">Rs. 1 samosa</span></div>
+    <p class="mast" data-lovely-id="t8">The Daily Menace</p>
+    <h1 class="headline" data-lovely-id="t9">local menace turns 20.</h1>
+    <p class="deck" data-lovely-id="t10">city in shock. his brother: "honestly, not surprised."</p>
+    <div class="front-body">
+      <div class="lead-photo">
+        <div class="halftone"><img src="https://res.cloudinary.com/dt94eifov/image/upload/v1778092644/lovely/defaults/template_assets/full_happy_dance_01.gif" alt="the birthday menace" data-lovely-id="i1"></div>
+        <p class="caption" data-lovely-id="t11">pictured: suspect, unbothered, already asking where the cake is.</p>
+      </div>
+      <div class="col">
+        <h3 data-lovely-id="t12">neighbours report loud singing since midnight</h3>
+        <div class="lines" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+        <div class="inside">
+          <p data-lovely-id="t13">inside: his crimes, exposed</p>
+          <small data-lovely-id="t14">page 2 →</small>
+        </div>
+        <div class="lines" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+      </div>
+    </div>
+    <div class="foot"><button class="btn dark small" id="btnExpose" data-lovely-id="t15">read the exposé →</button></div>
+  </div>
+</section>
+
+<!-- ═════════ 3 · the exposé ═════════ -->
+<section class="scene" id="expose" data-lovely-page="his crimes">
+  <div class="sheet" id="exposeSheet">
+    <span class="tag" data-lovely-id="t16">exclusive</span>
+    <h2 class="headline" data-lovely-id="t17">his crimes, exposed.</h2>
+    <p class="deck" data-lovely-id="t18">tap the black bars. we have receipts.</p>
+    <ol class="crimes" id="crimes">
+      <li class="crime"><p data-lovely-id="t19">says "calling you back in 5 min". 5 min means 5 days.</p><i class="bar"></i></li>
+      <li class="crime"><p data-lovely-id="t20">replied "haha" to my entire emotional paragraph.</p><i class="bar"></i></li>
+      <li class="crime"><p data-lovely-id="t21">"i'm not hungry" → eats half my food every time we meet.</p><i class="bar"></i></li>
+      <li class="crime"><p data-lovely-id="t22">has 47 screenshots of my chats. as "evidence".</p><i class="bar"></i></li>
+      <li class="crime"><p data-lovely-id="t23">still the first person i call. every single time.</p><i class="bar"></i></li>
+      <li class="crime"><p data-lovely-id="t24">lives so far away and still knows exactly when i'm lying.</p><i class="bar"></i></li>
+    </ol>
+    <p class="count" id="crimeCount"></p>
+    <div class="foot"><button class="btn small hidden" id="btnEvidence" data-lovely-id="t25">see the photo evidence →</button></div>
+    <p class="verdict" id="verdict" data-lovely-id="g1">guilty<br>&amp; loved</p>
+  </div>
+</section>
+
+<!-- ═════════ 4 · photo evidence ═════════ -->
+<section class="scene" id="evidence" data-lovely-page="photo evidence">
+  <div class="sheet" id="evidenceSheet">
+    <span class="tag" data-lovely-id="t26">exhibit a, b &amp; c</span>
+    <h2 class="headline hl" data-lovely-id="t27">photo evidence.</h2>
+    <p class="hint" data-lovely-id="t28">tap each photo to mark the suspect</p>
+    <div class="board">
+      <div class="cut c1">
+        <span class="tape"></span>
+        <div class="torn"><img src="https://res.cloudinary.com/dt94eifov/image/upload/v1778092648/lovely/defaults/template_assets/laughing_01.gif" alt="evidence one" loading="lazy" data-lovely-id="i2"></div>
+        <svg class="ring" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M54 6 C86 6 98 30 96 54 C94 82 70 96 46 95 C18 94 4 74 5 50 C6 24 26 8 58 10"></path></svg>
+        <p class="note" data-lovely-id="t29">laughing at his own joke</p>
+      </div>
+      <div class="cut c2">
+        <span class="tape"></span>
+        <div class="torn"><img src="https://res.cloudinary.com/dt94eifov/image/upload/v1778092606/lovely/defaults/template_assets/dance_01.gif" alt="evidence two" loading="lazy" data-lovely-id="i3"></div>
+        <svg class="ring" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M50 4 C82 5 97 28 95 55 C93 84 66 97 42 94 C16 91 3 70 6 46 C9 20 30 5 56 8"></path></svg>
+        <p class="note" data-lovely-id="t30">3am. no shame.</p>
+      </div>
+      <div class="cut c3">
+        <span class="tape"></span>
+        <div class="torn"><img src="https://res.cloudinary.com/dt94eifov/image/upload/v1778092646/lovely/defaults/template_assets/angry_01.gif" alt="evidence three" loading="lazy" data-lovely-id="i4"></div>
+        <svg class="ring" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M48 7 C80 4 96 26 95 52 C94 80 72 95 48 95 C20 95 4 74 6 49 C8 22 28 7 60 9"></path></svg>
+        <p class="note" data-lovely-id="t31">when he ate my fries</p>
+      </div>
+    </div>
+    <div class="foot"><button class="btn dark small hidden" id="btnPoll" data-lovely-id="t32">one last reader poll →</button></div>
+  </div>
+</section>
+
+<!-- ═════════ 5 · reader poll ═════════ -->
+<section class="scene" id="poll" data-lovely-page="reader poll">
+  <div class="sheet" id="pollSheet">
+    <span class="tag" data-lovely-id="t33">reader poll</span>
+    <h2 class="headline" data-lovely-id="t34">do we keep him another year?</h2>
+    <p class="deck" data-lovely-id="t35">vote now. lines close at midnight.</p>
+    <div class="opts" id="opts">
+      <button class="opt win" data-vote><i class="fillbar"></i><span data-lovely-id="t36">yes, obviously</span></button>
+      <button class="opt win" data-vote><i class="fillbar"></i><span data-lovely-id="t37">yes, forever</span></button>
+      <button class="opt no" id="optNo"><span data-lovely-id="t38">no</span></button>
+      <div class="results">
+        <p data-lovely-id="t39">yes, obviously ........ 100%</p>
+        <p data-lovely-id="t40">yes, forever .......... 100%</p>
+        <p data-lovely-id="t41">no ..................... 0%</p>
+        <p class="big" data-lovely-id="t42">the people have spoken.</p>
+      </div>
+    </div>
+    <div class="foot"><button class="btn small hidden" id="btnOfficial" data-lovely-id="t43">one last thing →</button></div>
+  </div>
+</section>
+
+<!-- ═════════ 5b · letter from the editor ═════════ -->
+<section class="scene" id="letter" data-lovely-page="the letter">
+  <div class="sheet" id="letterSheet">
+    <span class="tag" data-lovely-id="t60">editor's note · no jokes</span>
+    <h2 class="headline" data-lovely-id="t61">Dear Brother,</h2>
+    <div class="letter-body">
+      <p data-lovely-id="t62">on paper you're my cousin. in real life you're my brother and my best friend, and nobody gets to argue with that.</p>
+      <p data-lovely-id="t63">we live far apart and i hate it. but the distance never made you feel far. you're still the first person i call, the one who gets my jokes, the one who knows something's wrong before i say it.</p>
+      <p data-lovely-id="t64">you're 20 today. a whole new chapter. i hope it brings you good luck, big wins and way more cake. whatever happens, i'm in your corner, even from here.</p>
+      <p data-lovely-id="t65">now eat the cake, ignore anyone who says 20 is old, and call me back. (a real 5 minutes this time.)</p>
+      <p class="lsign" data-lovely-id="t66">— your brother from another mother</p>
+    </div>
+    <div class="foot"><button class="btn small hidden" id="btnToOfficial" data-lovely-id="t67">one fun game first →</button></div>
+  </div>
+</section>
+
+<!-- ═════════ 5c · fun game ═════════ -->
+<section class="scene" id="game" data-lovely-page="game time">
+  <div class="sheet" id="gameSheet">
+    <span class="tag" data-lovely-id="t70">sports desk · live</span>
+    <h2 class="headline" data-lovely-id="t71">tic-tac-toe.</h2>
+    <p class="deck" data-lovely-id="t72">me vs bhai. loser owes cake. 🎂</p>
+    <div class="scoreboard">
+      <div class="chip x on" id="chipX"><b>X</b><span>me</span><em id="scX">0</em></div>
+      <div class="chip d"><span>draws</span><em id="scD">0</em></div>
+      <div class="chip o" id="chipO"><b>O</b><span>bhai</span><em id="scO">0</em></div>
+    </div>
+    <div class="statusrow"><span class="status" id="gStatus"></span><button class="redo" id="btnRematch" type="button">rematch ↺</button></div>
+    <div class="boardwrap"><div class="ttt" id="ttt"></div></div>
+    <div class="dlg" id="dlg"><div class="card"><span class="tag" id="dlgTag">full time</span><h3 id="dlgTitle">draw</h3><p id="dlgSub"></p><button class="btn small" id="btnDlg" type="button">rematch ↺</button></div></div>
+    <div class="foot"><button class="btn small hidden" id="btnGameNext" data-lovely-id="t73">make it official →</button></div>
+  </div>
+</section>
+
+<!-- ═════════ 6 · make it official ═════════ -->
+<section class="scene" id="official" data-lovely-page="make it official">
+  <div class="sheet" id="officialSheet">
+    <div class="dateline"><span data-lovely-id="t44">final edition</span><span data-lovely-id="t45">late-night print</span><span data-lovely-id="t46">no refunds</span></div>
+    <div class="stamp-zone">
+      <div class="stamp-tool" id="stampTool">
+        <svg viewBox="0 0 150 170" aria-hidden="true">
+          <ellipse cx="75" cy="26" rx="30" ry="24" fill="#c4271f"></ellipse>
+          <ellipse cx="66" cy="18" rx="10" ry="6" fill="#ff6b5f" opacity=".7"></ellipse>
+          <rect x="62" y="44" width="26" height="60" rx="6" fill="#7a4a2a"></rect>
+          <rect x="66" y="44" width="6" height="60" fill="#9b6640"></rect>
+          <rect x="14" y="100" width="122" height="34" rx="6" fill="#2b2620"></rect>
+          <rect x="8" y="130" width="134" height="22" rx="3" fill="#e3241c"></rect>
+          <rect x="8" y="148" width="134" height="6" rx="2" fill="#8d130d"></rect>
+        </svg>
+      </div>
+      <div class="ink">
+        <p data-lovely-id="t47">happy birthday</p>
+        <small data-lovely-id="t48">approved · forever</small>
+      </div>
+      <div class="reveal">
+        <h2 class="name" data-lovely-id="t49">Bhai</h2>
+        <p class="line" data-lovely-id="t50">officially the best brother alive. no distance can cancel this.</p>
+        <p class="sign" data-lovely-id="t51">— your brother from another mother (unfortunately)</p>
+        <button class="again" id="btnAgain" data-lovely-id="t52">read it again ↺</button>
+      </div>
+    </div>
+    <div class="foot"><button class="btn holdbtn" id="btnStamp"><i class="fill" id="stampFill"></i><span data-lovely-id="t53">hold to stamp it</span></button></div>
+  </div>
+</section>
+
+<div style="display:none">
+  <span id="cfgCrimes" data-lovely-hint="count:3:6:crimes" style="display:none" data-lovely-id="t54">5</span>
+  <span id="cfgEvidence" data-lovely-hint="count:1:3:evidence photos" style="display:none" data-lovely-id="t55">3</span>
+</div>
+
+<script>
+(function () {
+  var $ = function (s, r) { return (r || document).querySelector(s); };
+  var $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function cfgNum(id, def, min, max) {
+    var el = document.getElementById(id);
+    var n = parseInt(((el && el.textContent) || '').trim(), 10);
+    if (isNaN(n)) n = def;
+    return Math.max(min, Math.min(max, n));
+  }
+  function show(id, anim) {
+    $$('.scene').forEach(function (s) { s.classList.toggle('show', s.id === id); });
+    var sh = $('#' + id + ' .sheet');
+    if (sh && anim) { sh.classList.remove('spin-in', 'slide-in'); void sh.offsetWidth; sh.classList.add(anim); }
+  }
+  function buzz(p) { if (navigator.vibrate) { try { navigator.vibrate(p); } catch (e) {} } }
+
+  /* 1 → 2 */
+  /* music: browsers only allow sound after a tap, so it starts on "print the paper" */
+  var bgm = $('#bgm'), btnMusic = $('#btnMusic');
+  var SONG_START = 0;      /* seconds into the song to start from */
+  var SONG_VOLUME = 0.8;   /* 0 to 1 */
+  var musicOn = true, fadeT = null;
+  function fadeTo(v, ms) {
+    clearInterval(fadeT);
+    var from = bgm.volume, steps = 20, i = 0;
+    fadeT = setInterval(function () {
+      i++; bgm.volume = Math.max(0, Math.min(1, from + (v - from) * i / steps));
+      if (i >= steps) { clearInterval(fadeT); if (v === 0) bgm.pause(); }
+    }, ms / steps);
+  }
+  function startMusic() {
+    bgm.volume = 0;
+    try { if (SONG_START) bgm.currentTime = SONG_START; } catch (e) {}
+    var pr = bgm.play();
+    if (pr && pr.then) {
+      pr.then(function () { btnMusic.classList.remove('hidden'); fadeTo(SONG_VOLUME, 1500); })
+        .catch(function () { btnMusic.classList.add('hidden'); });
+    }
+  }
+  bgm.addEventListener('error', function () { btnMusic.classList.add('hidden'); });
+  btnMusic.addEventListener('click', function () {
+    musicOn = !musicOn;
+    btnMusic.classList.toggle('off', !musicOn);
+    btnMusic.textContent = musicOn ? '♪ music on' : '♪ music off';
+    if (musicOn) { bgm.play().catch(function () {}); fadeTo(SONG_VOLUME, 600); } else { fadeTo(0, 400); }
+  });
+
+  $('#btnPrint').addEventListener('click', function () { show('front', 'spin-in'); buzz(20); startMusic(); });
+  $('#btnExpose').addEventListener('click', function () { setupCrimes(); show('expose', 'slide-in'); });
+
+  /* 3 · crimes */
+  var crimes = $$('#crimes .crime'), active = [], opened = 0;
+  crimes.forEach(function (c) { var p = c.querySelector('p'); if (p && !p.querySelector('span')) p.innerHTML = '<span>' + p.innerHTML + '</span>'; });
+  function setupCrimes() {
+    var n = cfgNum('cfgCrimes', 5, 3, 6);
+    opened = 0;
+    active = crimes.slice(0, n);
+    crimes.forEach(function (c, i) { c.classList.remove('open'); c.style.display = i < n ? '' : 'none'; });
+    $('#verdict').classList.remove('slam');
+    $('#btnEvidence').classList.add('hidden');
+    $('#crimeCount').textContent = '0 / ' + n + ' declassified';
+  }
+  crimes.forEach(function (c) {
+    c.addEventListener('click', function () {
+      if (c.classList.contains('open') || active.indexOf(c) < 0) return;
+      c.classList.add('open'); opened++; buzz(12);
+      $('#crimeCount').textContent = opened + ' / ' + active.length + ' declassified';
+      if (opened === active.length) {
+        setTimeout(function () { $('#verdict').classList.add('slam'); buzz([20, 30, 40]); shakeSheet('#exposeSheet'); }, 700);
+        setTimeout(function () { $('#btnEvidence').classList.remove('hidden'); }, 1300);
+      }
+    });
+  });
+  function shakeSheet(sel) { var s = $(sel); s.classList.remove('shake', 'slide-in', 'spin-in'); void s.offsetWidth; s.classList.add('shake'); }
+
+  /* 4 · evidence */
+  var cuts = $$('.cut'), liveCuts = [];
+  $('#btnEvidence').addEventListener('click', function () {
+    var n = cfgNum('cfgEvidence', 3, 1, 3);
+    liveCuts = cuts.slice(0, n);
+    cuts.forEach(function (c, i) { c.classList.remove('marked'); c.style.display = i < n ? '' : 'none'; });
+    // re-centre if fewer photos
+    if (n === 1) { cuts[0].style.left = '20%'; cuts[0].style.top = '14%'; } else { cuts[0].style.left = ''; cuts[0].style.top = ''; }
+    if (n === 2) { cuts[1].style.top = '44%'; } else { cuts[1].style.top = ''; }
+    $('#btnPoll').classList.add('hidden');
+    show('evidence', 'slide-in');
+  });
+  cuts.forEach(function (c) {
+    c.addEventListener('click', function () {
+      c.classList.add('marked'); buzz(10);
+      if (liveCuts.every(function (x) { return x.classList.contains('marked'); })) {
+        setTimeout(function () { $('#btnPoll').classList.remove('hidden'); }, 900);
+      }
+    });
+  });
+
+  /* 5 · poll */
+  var poll = $('#poll'), no = $('#optNo'), dodges = 0;
+  $('#btnPoll').addEventListener('click', function () {
+    poll.classList.remove('voted'); dodges = 0;
+    no.classList.remove('run', 'hidden'); no.style.left = ''; no.style.top = '';
+    $('#btnOfficial').classList.add('hidden');
+    show('poll', 'slide-in');
+  });
+  function dodge(e) {
+    if (e) e.preventDefault();
+    dodges++;
+    var box = $('#opts').getBoundingClientRect();
+    no.classList.add('run');
+    var w = no.offsetWidth, h = no.offsetHeight;
+    var x = Math.random() * Math.max(10, box.width - w);
+    var y = 150 + Math.random() * Math.max(10, box.height - h - 240);
+    no.style.left = x + 'px'; no.style.top = y + 'px';
+    buzz(8);
+    if (dodges >= 4) { no.classList.add('hidden'); }
+  }
+  no.addEventListener('pointerdown', dodge);
+  no.addEventListener('click', function (e) { if (e.detail === 0) dodge(e); });
+  $$('[data-vote]').forEach(function (b) {
+    b.addEventListener('click', function () {
+      poll.classList.add('voted'); no.classList.add('hidden'); buzz([15, 20, 15]);
+      setTimeout(function () { $('#btnOfficial').classList.remove('hidden'); }, 1600);
+    });
+  });
+
+  /* 6 · stamp */
+  var off = $('#official'), tool = $('#stampTool'), fill = $('#stampFill');
+  var prog = 0, holding = false, done = false, last = 0, loop = false;
+  function paint() { tool.style.setProperty('--p', prog); fill.style.width = (prog * 100) + '%'; }
+  function tickStamp(now) {
+    var dt = Math.min(64, now - last); last = now;
+    if (done) { loop = false; return; }
+    prog += (holding ? 1 : -1.8) * dt / 1300;
+    prog = Math.max(0, Math.min(1, prog));
+    paint();
+    if (prog >= 1) { finish(); loop = false; return; }
+    if (holding || prog > 0) requestAnimationFrame(tickStamp); else loop = false;
+  }
+  function kick() { if (!loop) { loop = true; last = performance.now(); requestAnimationFrame(tickStamp); } }
+  function finish() {
+    done = true; holding = false;
+    tool.classList.add('hit');
+    off.classList.add('done');
+    shakeSheet('#officialSheet');
+    buzz([40, 30, 80]);
+    confetti();
+  }
+  function confetti() {
+    if (reduce) return;
+    for (var i = 0; i < 46; i++) {
+      var s = document.createElement('i');
+      s.className = 'scrap' + (i % 4 === 0 ? ' r' : i % 5 === 0 ? ' y' : '');
+      s.style.left = (Math.random() * 100) + 'vw';
+      s.style.top = (-10 - Math.random() * 30) + 'vh';
+      s.style.setProperty('--x', (Math.random() * 120 - 60) + 'px');
+      s.style.setProperty('--rot', (Math.random() * 900 - 450) + 'deg');
+      s.style.setProperty('--t', (1.8 + Math.random() * 1.8) + 's');
+      s.style.animationDelay = (Math.random() * .6) + 's';
+      document.body.appendChild(s);
+      (function (el) { setTimeout(function () { el.remove(); }, 4500); })(s);
+    }
+  }
+  var bs = $('#btnStamp');
+  function down(e) { e.preventDefault(); if (done) return; holding = true; kick(); }
+  function up() { holding = false; }
+  bs.addEventListener('pointerdown', down);
+  ['pointerup', 'pointerleave', 'pointercancel'].forEach(function (ev) { bs.addEventListener(ev, up); });
+  bs.addEventListener('keydown', function (e) { if ((e.key === ' ' || e.key === 'Enter') && !e.repeat) down(e); });
+  bs.addEventListener('keyup', up);
+  bs.addEventListener('contextmenu', function (e) { e.preventDefault(); });
+
+  var letterT = null;
+  $('#btnOfficial').addEventListener('click', function () {
+    var b = $('#btnToOfficial'); b.classList.add('hidden');
+    clearTimeout(letterT);
+    letterT = setTimeout(function () { b.classList.remove('hidden'); }, 5600);
+    show('letter', 'slide-in'); buzz(15);
+  });
+  $('#btnToOfficial').addEventListener('click', function () { resetGame(true); show('game', 'slide-in'); buzz(15); });
+  $('#btnGameNext').addEventListener('click', function () {
+    clearToasts(); closeDlg();
+    done = false; prog = 0; paint(); tool.classList.remove('hit'); off.classList.remove('done');
+    show('official', 'slide-in');
+  });
+  $('#btnAgain').addEventListener('click', function () { show('press'); });
+
+  /* 5c · tic-tac-toe + rising messages + apple emoji */
+  var EMO_RE = /\p{Extended_Pictographic}(?:\uFE0F|\u200D\p{Extended_Pictographic}|[\u{1F3FB}-\u{1F3FF}])*/gu;
+  var EMO_CDN = 'https://cdn.jsdelivr.net/npm/emoji-datasource-apple@15.1.2/img/apple/64/';
+  function emoImg(ch) {
+    var cps = Array.from(ch).map(function (c) { return c.codePointAt(0).toString(16); });
+    var full = cps.join('-'), bare = cps.filter(function (c) { return c !== 'fe0f'; }).join('-');
+    return '<img class="emo" alt="' + ch + '" draggable="false" src="' + EMO_CDN + full + '.png" data-b="' + bare + '" data-c="' + ch + '">';
+  }
+  document.addEventListener('error', function (e) {
+    var im = e.target;
+    if (!im || im.tagName !== 'IMG' || !im.classList.contains('emo')) return;
+    if (im.dataset.b && im.src.indexOf('/' + im.dataset.b + '.png') < 0) { im.src = EMO_CDN + im.dataset.b + '.png'; }
+    else { im.replaceWith(document.createTextNode(im.dataset.c)); }
+  }, true);
+  function emojify(root) {
+    var w = document.createTreeWalker(root, NodeFilter.SHOW_TEXT), nodes = [], n;
+    while ((n = w.nextNode())) { EMO_RE.lastIndex = 0; if (EMO_RE.test(n.nodeValue)) nodes.push(n); }
+    nodes.forEach(function (t) {
+      var sp = document.createElement('span');
+      sp.innerHTML = t.nodeValue.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(EMO_RE, emoImg);
+      t.replaceWith.apply(t, Array.prototype.slice.call(sp.childNodes));
+    });
+  }
+
+  var NAME = { X: 'me', O: 'bhai' };  /* X = him (opens the page, starts), O = you */
+  var MSGS = {
+    X: ['the birthday boy makes a move. brilliant. obviously. 😎', 'breaking: birthday boy marks a square. universe shakes. 🌍', 'calculated. precise. slightly emotional. 🧠', 'bhai, this is the part where you cry. 😭', 'the birthday boy is not even trying yet. 😌', 'bold move from the man of the hour. 💪', 'plot twist: it is a trap. 🪤', 'he smiles. bhai should worry. 😈'],
+    O: ['bhai marks a spot. experts say wrong one. 🧐', 'sources say bhai just closed his eyes and tapped. 🙈', 'bhai moves. this took 5 min. or 5 days. ⏳', 'bhai calls it strategy. the court calls it luck. ⚖️', 'witnesses saw bhai smiling. suspicious. 😏', 'update: bhai is typing "haha" in his head. 😂', 'bhai made a move and also ate half your fries. 🍟', 'breaking: bhai thinks he is a genius. 🤓 (unconfirmed)']
+  };
+  var LINES = [[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]];
+  var gb = [], turn = 'X', starter = 'X', over = false, sc = { X: 0, O: 0, D: 0 }, played = 0, usedMsg = { X: [], O: [] }, toastN = 0;
+  var ttt = $('#ttt'), cells = [];
+  for (var ci = 0; ci < 9; ci++) {
+    (function (i) {
+      var b = document.createElement('button'); b.type = 'button'; b.className = 'cell'; b.setAttribute('aria-label', 'square ' + (i + 1));
+      b.addEventListener('click', function () { place(i); });
+      ttt.appendChild(b); cells.push(b);
+    })(ci);
+  }
+  function pick(mark) {
+    var pool = MSGS[mark];
+    if (usedMsg[mark].length >= pool.length) usedMsg[mark] = [];
+    var i; do { i = Math.floor(Math.random() * pool.length); } while (usedMsg[mark].indexOf(i) >= 0);
+    usedMsg[mark].push(i); return pool[i];
+  }
+  function status(t) { var el = $('#gStatus'); el.textContent = t; emojify(el); }
+  function paintTurn() {
+    $('#chipX').classList.toggle('on', !over && turn === 'X');
+    $('#chipO').classList.toggle('on', !over && turn === 'O');
+  }
+  function resetGame(hard) {
+    closeDlg();
+    if (hard) { sc = { X: 0, O: 0, D: 0 }; played = 0; starter = 'O'; }
+    starter = starter === 'X' ? 'O' : 'X'; turn = starter; over = false; gb = [];
+    cells.forEach(function (c) { c.className = 'cell'; c.innerHTML = ''; });
+    ttt.classList.remove('locked');
+    $('#scX').textContent = sc.X; $('#scO').textContent = sc.O; $('#scD').textContent = sc.D;
+    if (hard) $('#btnGameNext').classList.add('hidden');
+    clearToasts(); paintTurn(); status('next up: ' + NAME[turn] + ' 👉');
+  }
+  function winner() {
+    for (var i = 0; i < LINES.length; i++) { var l = LINES[i]; if (gb[l[0]] && gb[l[0]] === gb[l[1]] && gb[l[0]] === gb[l[2]]) return l; }
+    return null;
+  }
+  function place(i) {
+    if (over || gb[i]) return;
+    var m = turn; gb[i] = m;
+    cells[i].classList.add(m.toLowerCase()); cells[i].innerHTML = '<i>' + m + '</i>'; buzz(10);
+    var line = winner();
+    if (line) {
+      over = true; sc[m]++; line.forEach(function (k) { cells[k].classList.add('win'); });
+      ttt.classList.add('locked'); status(NAME[m] + ' wins! 🏆');
+      buzz([20, 30, 40]); shakeSheet('#gameSheet');
+      if (m === 'X') {
+        confetti(); toast('extra: the birthday boy wins. bhai owes cake. 🏆🎂', 'extra', true, 'X');
+        setTimeout(function () { $('#btnGameNext').classList.remove('hidden'); }, 900);
+      } else {
+        endRound('bhai wins', 'not this time. beat bhai to move on. 😏', 'try again');
+      }
+    } else if (gb.filter(Boolean).length === 9) {
+      over = true; sc.D++; status('draw 🤝');
+      endRound('draw', 'nobody wins. beat bhai to move on. 🤝', 'full time');
+    } else {
+      turn = m === 'X' ? 'O' : 'X'; status('next up: ' + NAME[turn] + ' 👉');
+      toast(pick(m), NAME[m] + "'s move", false, m);
+    }
+    $('#scX').textContent = sc.X; $('#scO').textContent = sc.O; $('#scD').textContent = sc.D; paintTurn();
+  }
+  var dlgT = null;
+  function endRound(title, sub, tag) {
+    played++; clearTimeout(dlgT);
+    dlgT = setTimeout(function () {
+      $('#dlgTag').textContent = tag; $('#dlgTitle').textContent = title; $('#dlgSub').textContent = sub; emojify($('#dlgSub'));
+      var d = $('#dlg'); d.classList.remove('ready'); d.classList.add('show'); buzz(15);
+      setTimeout(function () { d.classList.add('ready'); }, 900);
+    }, 800);
+  }
+  function closeDlg() { clearTimeout(dlgT); $('#dlg').classList.remove('show', 'ready'); }
+  $('#btnDlg').addEventListener('click', function () { closeDlg(); resetGame(false); buzz(8); });
+  $('#btnRematch').addEventListener('click', function () { resetGame(false); buzz(8); });
+
+  /* rising messages: hold one (press & hold ~0.2s) to pause it and read */
+  function toast(text, tag, big, side) {
+    var t = document.createElement('div');
+    t.className = 'toast' + (big ? ' big' : '');
+    t.classList.add(side === 'O' ? 'R' : 'L');
+    t.innerHTML = '<span class="tt"></span><p></p>' + (toastN++ < 2 ? '<small>hold to pause ✋</small>' : '');
+    t.firstChild.textContent = tag; t.querySelector('p').textContent = text;
+    emojify(t); document.body.appendChild(t);
+    t.addEventListener('animationend', function () { t.remove(); });
+  }
+  function clearToasts() { $$('.toast').forEach(function (t) { t.remove(); }); }
+  var holdT = null, heldEl = null, noClickUntil = 0;
+  function toastAt(x, y) {
+    var ts = $$('.toast');
+    for (var i = ts.length - 1; i >= 0; i--) { var r = ts[i].getBoundingClientRect(); if (x >= r.left && x <= r.right && y >= r.top && y <= r.bottom) return ts[i]; }
+    return null;
+  }
+  function release() {
+    clearTimeout(holdT);
+    if (heldEl) { heldEl.style.animationPlayState = ''; heldEl.classList.remove('held'); heldEl = null; noClickUntil = Date.now() + 350; }
+  }
+  document.addEventListener('pointerdown', function (e) {
+    var t = toastAt(e.clientX, e.clientY); if (!t) return;
+    holdT = setTimeout(function () { heldEl = t; t.style.animationPlayState = 'paused'; t.classList.add('held'); buzz(12); }, 200);
+  }, true);
+  ['pointerup', 'pointercancel'].forEach(function (ev) { document.addEventListener(ev, release, true); });
+  document.addEventListener('click', function (e) { if (Date.now() < noClickUntil || heldEl) { e.stopPropagation(); e.preventDefault(); } }, true);
+  document.addEventListener('contextmenu', function (e) { if (toastAt(e.clientX, e.clientY)) e.preventDefault(); });
+  emojify($('#game'));
+  resetGame(true);
+  setupCrimes();
+})();
+</script>
+</body>
+</html>
